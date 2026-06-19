@@ -29,4 +29,25 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function lecturer(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(\App\Models\Lecturer::class);
+    }
+    public function canImpersonate()
+    {
+        return is_null($this->lecturer);
+    }
+    public function canBeImpersonated()
+    {
+        if (!is_null($this->lecturer)) {
+            if ($this->email === 'soifulhadi@gmail.com') {
+                return false;
+            }
+            return true;
+            
+        
+    }
+
+}
 }

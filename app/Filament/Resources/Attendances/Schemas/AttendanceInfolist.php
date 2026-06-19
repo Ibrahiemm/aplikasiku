@@ -25,6 +25,16 @@ class AttendanceInfolist
                 TextEntry::make('updated_at')
                     ->dateTime()
                     ->placeholder('-'),
+                \Fahiem\FilamentPinpoint\Pinpoint::make('location')
+                    ->label('Lokasi Absen')
+                    ->provider('leaflet')
+                    ->defaultZoom(17)
+                    ->height(400)
+                    ->latField('latitude')
+                    ->lngField('longitude')
+                    ->draggable(false)
+                    ->searchable(false)
+                    ->columnSpanFull(),
             ]);
     }
 }

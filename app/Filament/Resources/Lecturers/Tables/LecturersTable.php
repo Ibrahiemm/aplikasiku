@@ -76,6 +76,7 @@ class LecturersTable
                         $record->update(['user_id' => $user->id]);
                     })
                     ->successNotificationTitle('User berhasil dibuat')
+                    ->authorize('makeUser'),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
